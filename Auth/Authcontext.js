@@ -17,9 +17,9 @@ const AuthContextProvider = ({children}) => {
   const [userToken, setUserToken] = useState('');
   const [auth, setAuth] = useState('');
 
-  const Auth = useMemo(()=>{
-    return {setAuth,handlingLogin,handlingLogout}
-  },[auth])
+  const Auth = useMemo(() => {
+    return {setAuth, handlingLogin, handlingLogout};
+  }, [auth]);
   const login = async () => {
     try {
       const token = 'user123';
@@ -34,6 +34,7 @@ const AuthContextProvider = ({children}) => {
 
   const logout = async () => {
     try {
+      console.log('lop');
       await AsyncStorage.removeItem('userToken');
       setUserToken('');
       console.log('Logout pressed');
@@ -41,18 +42,15 @@ const AuthContextProvider = ({children}) => {
       console.log('Error Logging Out ', err);
     }
   };
-  const handlingLogin = useCallback(()=>{
+  function handlingLogin() {
+    console.log("Logging in")
     login()
-  },[])
-  const handlingLogout = useCallback(()=>{
+  }
+  function handlingLogout() {
+    console.log("Logging out")
     logout()
-  },[])
-
-  return (
-    <AuthContext.Provider value={Auth}>
-      {children}
-    </AuthContext.Provider>
-  );
+  }
+  return <AuthContext.Provider value={Auth}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContextProvider;

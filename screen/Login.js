@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
 import React, {useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useAuthContext} from '../Auth/Authcontext';
 
 function Login({navigation}) {
@@ -10,13 +9,13 @@ function Login({navigation}) {
   const userEmail = 'abc@gmail.com';
   const userPassword = 'abc';
 
-  const {handlingLogin,setAuth} = useAuthContext();
+  const {handlingLogin, setAuth} = useAuthContext();
 
   const handleLogin = async () => {
     try {
       if (email === userEmail && password === userPassword) {
         // set userToken
-        setAuth("Logging In")
+        setAuth('Logging In');
         await handlingLogin();
         // navigate to HomeScreen
         navigation.navigate('Tabscreen');

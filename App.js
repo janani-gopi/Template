@@ -3,12 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Splash from './screen/Splash';
 import Login from './screen/Login';
 import Tabscreen from './screen/Tabscreen';
-import Tab1 from './screen/Tab1';
-import Tab2 from './screen/Tab2';
-import Tab3 from './screen/Tab3';
-import Tab4 from './screen/Tab4';
-import Dashboard from './screen/Dashboard';
 import {useState, useEffect} from 'react';
+import Tab1 from './screen/Tab1';
 import AuthContextProvider from './Auth/Authcontext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ActivityIndicator, View} from 'react-native';
@@ -29,9 +25,10 @@ function App() {
     try {
       const userToken = await AsyncStorage.getItem('userToken');
       if (userToken) {
-        console.log("User already logged in")
+        console.log('User already logged in');
         setInitialRoute('Tabscreen');
-      } else{
+      } else {
+        console.log("Logged out")
         setInitialRoute('Login');
       }
     } catch (error) {
@@ -50,11 +47,12 @@ function App() {
             <Stack.Screen name="Splash" component={Splash} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Tabscreen" component={Tabscreen} />
-            {/* <Stack.Screen name="Dashboard" component={Dashboard} />
+            
             <Stack.Screen name="Tab1" component={Tab1} />
-            <Stack.Screen name="Tab2" component={Tab2} />
+            {/* <Stack.Screen name="Tab2" component={Tab2} />
             <Stack.Screen name="Tab3" component={Tab3} />
-            <Stack.Screen name="Tab4" component={Tab4} /> */}
+            <Stack.Screen name="Tab4" component={Tab4} /> 
+            <Stack.Screen name="Dashboard" component={Dashboard} /> */}
           </Stack.Navigator>
         ) : (
           <View
