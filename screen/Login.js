@@ -10,7 +10,7 @@ function Login({navigation}) {
   const userPassword = 'abc';
 
   const {handlingLogin, setAuth} = useAuthContext();
-
+  
   const handleLogin = async () => {
     try {
       if (email === userEmail && password === userPassword) {

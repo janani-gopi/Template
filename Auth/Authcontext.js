@@ -26,7 +26,6 @@ const AuthContextProvider = ({children}) => {
       await AsyncStorage.setItem('userToken', token);
       console.log('Logging in');
       setUserToken(token);
-      console.log(userToken);
     } catch (err) {
       console.log('Error Logging In ', err);
     }
@@ -34,7 +33,6 @@ const AuthContextProvider = ({children}) => {
 
   const logout = async () => {
     try {
-      console.log('lop');
       await AsyncStorage.removeItem('userToken');
       setUserToken('');
       console.log('Logout pressed');

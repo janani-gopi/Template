@@ -47,7 +47,6 @@ function App() {
             <Stack.Screen name="Splash" component={Splash} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Tabscreen" component={Tabscreen} />
-            
             <Stack.Screen name="Tab1" component={Tab1} />
             {/* <Stack.Screen name="Tab2" component={Tab2} />
             <Stack.Screen name="Tab3" component={Tab3} />

@@ -14,9 +14,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 function Dashboard({navigation}) {
   const {handlingLogout, setAuth} = useAuthContext();
   const drawer = useRef(null);
-  const handleLogout =() => {
+  const handleLogout =async() => {
     setAuth('Logging Out');
-     handlingLogout();
+     await handlingLogout();
     navigation.navigate('Login');
   };
   const navigationView = () => (
